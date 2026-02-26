@@ -1112,7 +1112,20 @@
   <span>HP: ████████ 100%</span>
 </div>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script></script>
 <script>
+   // Photo upload
+  function loadPhoto(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('photoImg').src = e.target.result;
+      document.getElementById('photoPlaceholder').style.display = 'none';
+      document.getElementById('photoFrame').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
   // Status bar clock
   function updateTime() {
     const now = new Date();
@@ -1152,4 +1165,5 @@
 </body>
 
 </html>
+
 
